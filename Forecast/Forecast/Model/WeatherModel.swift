@@ -19,7 +19,7 @@ struct WeatherModel{
     
     var temperatureInCelsius: String{
         let convertedKtoCTemp = temperature - 273.15
-        return String(format: "%.1f", convertedKtoCTemp)
+        return String(format: "%.1f C", convertedKtoCTemp)
     }
     
     func getWeatherDescription(weatherId: Int) -> String {

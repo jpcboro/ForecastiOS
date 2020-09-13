@@ -7,20 +7,35 @@
 //
 
 import UIKit
+import CoreLocation
 
-class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManagerDelegate {
-   
-    
+class WeatherViewController: UIViewController {
 
     @IBOutlet weak var weatherCondition: UIImageView!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var citySearchTextField: UITextField!
-
+    @IBOutlet weak var cityLabel: UILabel!
+   
     var weatherManager = WeatherManager()
+    let locManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ModifySearchBarUI()
+        
+        locManager.delegate = self
+        locManager.desiredAccuracy = kCLLocationAccuracyBest
+        locManager.distanceFilter = 200
+
+        locManager.requestWhenInUseAuthorization()
+        locManager.requestLocation()
+        
+        citySearchTextField.delegate = self
+        weatherManager.delegate = self
+    }
+
+    private func ModifySearchBarUI() {
         let placeholderColor = UIColor(red: 0.79, green: 0.58, blue: 0.62, alpha: 0.5)
         let placeholder = citySearchTextField.placeholder ?? ""
         citySearchTextField.attributedPlaceholder = NSAttributedString(string: placeholder,
@@ -36,12 +51,13 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManag
         citySearchTextField.layer.cornerRadius = 15.0
         citySearchTextField.layer.borderWidth = 2.0
         citySearchTextField.layer.borderColor = UIColor.lightGray.cgColor
-
-        citySearchTextField.delegate = self
-
-        weatherManager.delegate = self
-
     }
+
+}
+
+//MARK: - UITextFieldDelegate Section
+
+extension WeatherViewController : UITextFieldDelegate {
 
     @IBAction func searchTapped(_ sender: UIButton) {
         citySearchTextField.endEditing(true)
@@ -67,20 +83,59 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManag
             textField.placeholder = "Please enter name of city"
             return false
         }
-
-
     }
+}
 
+//MARK: - WeatherManagerDelegate extension
+extension WeatherViewController : WeatherManagerDelegate{
     func updateWeather(_ weatherManager:WeatherManager, weather: WeatherModel) {
         DispatchQueue.main.async {
             self.tempLabel.text = weather.temperatureInCelsius
             self.weatherCondition.image = UIImage(systemName: weather.conditionName)
+            self.cityLabel.text = weather.cityName
         }
-        
+
+    }
+
+    func failedWithError(error: Error) {
+        DispatchQueue.main.async {
+            print(error)
+
+            let alert = UIAlertController(title: "Error", message: String("Something went wrong: Please search for a proper city or check your internet connection"), preferredStyle: .alert)
+
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+
+            self.present(alert, animated: true)
+        }
+
+    }
+}
+
+//MARK: - LocationDelegate
+extension WeatherViewController : CLLocationManagerDelegate{
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("location failed: Error: \(error)")
     }
     
-    func failedWithError(error: Error) {
-           print(error)
-       }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+            let locationVal: CLLocationCoordinate2D = (manager.location!.coordinate)
+                   self.weatherManager.getWeather(latitude: locationVal.latitude, longitude: locationVal.longitude)
+//                          let geoCoder = CLGeocoder()
+//                          let location = CLLocation(latitude: locationVal.latitude, longitude: locationVal.longitude)
+        
+//                   geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+//                       placemarks?.forEach({ (placemark) in
+//                           if let city = placemark.locality{
+//                               print(city)
+//                            self.cityLabel.text = city
+//
+//                           }
+//                       })
+//                   }
+            
+    }
+    
+    
 }
 

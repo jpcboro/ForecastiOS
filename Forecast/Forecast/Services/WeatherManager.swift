@@ -18,6 +18,13 @@ struct WeatherManager {
 
     func getWeather(cityName: String){
         let urlString = "\(weatherAPIUrl)&q=\(cityName)"
+        
+        getWeatherRequestFromUrl(with: urlString)
+    }
+    
+    func getWeather(latitude: Double, longitude: Double){
+        let urlString = "\(weatherAPIUrl)&lat=\(latitude)&lon=\(longitude)"
+        
         getWeatherRequestFromUrl(with: urlString)
     }
     
@@ -56,8 +63,14 @@ struct WeatherManager {
             let weatherModel = WeatherModel(conditionId: id, cityName: cityName, temperature: temp)
             return weatherModel
         }catch{
+//            DispatchQueue.main.async {
+//                print(error)
+//                self.delegate?.failedWithError(error: error)
+//            }
+            
             print(error)
-            delegate?.failedWithError(error: error)
+            self.delegate?.failedWithError(error: error)
+            
             return nil
         }
        

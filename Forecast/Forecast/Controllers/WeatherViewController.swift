@@ -9,6 +9,8 @@
 import UIKit
 
 class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManagerDelegate {
+   
+    
 
     @IBOutlet weak var weatherCondition: UIImageView!
     @IBOutlet weak var tempLabel: UILabel!
@@ -74,8 +76,11 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManag
             self.tempLabel.text = weather.temperatureInCelsius
             self.weatherCondition.image = UIImage(systemName: weather.conditionName)
         }
-       
-
+        
     }
+    
+    func failedWithError(error: Error) {
+           print(error)
+       }
 }
 

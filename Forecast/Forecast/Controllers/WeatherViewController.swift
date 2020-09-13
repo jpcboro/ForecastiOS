@@ -69,7 +69,7 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManag
 
     }
 
-    func updateWeather(weather: WeatherModel) {
+    func updateWeather(_ weatherManager:WeatherManager, weather: WeatherModel) {
         DispatchQueue.main.async {
             self.tempLabel.text = weather.temperatureInCelsius
             self.weatherCondition.image = UIImage(systemName: weather.conditionName)

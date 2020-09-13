@@ -34,7 +34,15 @@ class WeatherViewController: UIViewController {
         citySearchTextField.delegate = self
         weatherManager.delegate = self
     }
-
+    
+    
+    @IBAction func GetCurrentLocationTapped(_ sender: UIButton) {
+       
+        locManager.startUpdatingLocation()
+        
+    }
+    
+    //MARK: - Modify Search Bar UI
     private func ModifySearchBarUI() {
         let placeholderColor = UIColor(red: 0.79, green: 0.58, blue: 0.62, alpha: 0.5)
         let placeholder = citySearchTextField.placeholder ?? ""
@@ -48,7 +56,7 @@ class WeatherViewController: UIViewController {
                 width: 15,
                 height: citySearchTextField.frame.height))
         citySearchTextField.leftViewMode = .always
-        citySearchTextField.layer.cornerRadius = 15.0
+        citySearchTextField.layer.cornerRadius = 25
         citySearchTextField.layer.borderWidth = 2.0
         citySearchTextField.layer.borderColor = UIColor.lightGray.cgColor
     }
@@ -119,8 +127,15 @@ extension WeatherViewController : CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            let locationVal: CLLocationCoordinate2D = (manager.location!.coordinate)
-                   self.weatherManager.getWeather(latitude: locationVal.latitude, longitude: locationVal.longitude)
+        if let location = locations.last{
+              locManager.stopUpdatingLocation()
+            let latitude = location.coordinate.latitude
+            let longitude = location.coordinate.longitude
+            weatherManager.getWeather(latitude: latitude, longitude: longitude)
+            print("lat: \(latitude), long: \(longitude)")
+        }
+//            let locationVal: CLLocationCoordinate2D = (manager.location!.coordinate)
+//                   self.weatherManager.getWeather(latitude: locationVal.latitude, longitude: locationVal.longitude)
 //                          let geoCoder = CLGeocoder()
 //                          let location = CLLocation(latitude: locationVal.latitude, longitude: locationVal.longitude)
         

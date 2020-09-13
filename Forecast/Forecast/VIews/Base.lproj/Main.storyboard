@@ -15,9 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="BPJ-ev-5vY">
-                                <rect key="frame" x="0.0" y="44" width="414" height="833"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="BPJ-ev-5vY">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="25 C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2I-US-UZX">
                                 <rect key="frame" x="43" y="186" width="214" height="84"/>
@@ -36,6 +35,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" backgroundImage="location" catalog="system"/>
+                                <connections>
+                                    <action selector="GetCurrentLocationTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JOM-ZQ-1dz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GfY-8i-qTF">
                                 <rect key="frame" x="360" y="327" width="40" height="37"/>
@@ -63,6 +65,12 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="BPJ-ev-5vY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="W01-QI-H51"/>
+                            <constraint firstAttribute="bottom" secondItem="BPJ-ev-5vY" secondAttribute="bottom" id="WWN-YC-5T8"/>
+                            <constraint firstItem="BPJ-ev-5vY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rLw-kH-dCo"/>
+                            <constraint firstItem="BPJ-ev-5vY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="twO-Oj-0oD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>

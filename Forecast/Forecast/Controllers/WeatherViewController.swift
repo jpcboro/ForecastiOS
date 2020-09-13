@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController, UITextFieldDelegate {
+class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManagerDelegate {
 
     @IBOutlet weak var weatherCondition: UIImageView!
     @IBOutlet weak var tempLabel: UILabel!
@@ -36,6 +36,8 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
         citySearchTextField.layer.borderColor = UIColor.lightGray.cgColor
 
         citySearchTextField.delegate = self
+
+        weatherManager.delegate = self
 
     }
 
@@ -67,5 +69,13 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
 
     }
 
+    func updateWeather(weather: WeatherModel) {
+        DispatchQueue.main.async {
+            self.tempLabel.text = weather.temperatureInCelsius
+            self.weatherCondition.image = UIImage(systemName: weather.conditionName)
+        }
+       
+
+    }
 }
 

@@ -139,24 +139,22 @@ extension WeatherViewController : CLLocationManagerDelegate{
               locManager.stopUpdatingLocation()
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
+             self.isFromLocation = true
             weatherManager.getWeather(latitude: latitude, longitude: longitude)
             print("lat: \(latitude), long: \(longitude)")
-        }
-            let locationVal: CLLocationCoordinate2D = (manager.location!.coordinate)
-                   self.weatherManager.getWeather(latitude: locationVal.latitude, longitude: locationVal.longitude)
-                          let geoCoder = CLGeocoder()
-                          let location = CLLocation(latitude: locationVal.latitude, longitude: locationVal.longitude)
-        
-                   geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
-                       placemarks?.forEach({ (placemark) in
-                           if let city = placemark.locality{
-                               print(city)
-                            self.isFromLocation = true
-                            self.currentCity = city
+            let geoCoder = CLGeocoder()
+                geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+                                  placemarks?.forEach({ (placemark) in
+                                      if let city = placemark.locality{
+                                          print(city)
+                                      
+                                       self.currentCity = city
 
-                           }
-                       })
-                   }
+                                      }
+                                  })
+                              }
+        }
+           
             
     }
     

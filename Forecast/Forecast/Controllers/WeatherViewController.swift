@@ -18,6 +18,8 @@ class WeatherViewController: UIViewController {
    
     var weatherManager = WeatherManager()
     let locManager = CLLocationManager()
+    var currentCity: String = ""
+    var isFromLocation: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +82,7 @@ extension WeatherViewController : UITextFieldDelegate {
 
         if let city = textField.text{
             weatherManager.getWeather(cityName: city)
+            isFromLocation = false
         }
         citySearchTextField.text = ""
     }
@@ -100,7 +103,12 @@ extension WeatherViewController : WeatherManagerDelegate{
         DispatchQueue.main.async {
             self.tempLabel.text = weather.temperatureInCelsius
             self.weatherCondition.image = UIImage(systemName: weather.conditionName)
-            self.cityLabel.text = weather.cityName
+            if self.isFromLocation{
+                self.cityLabel.text = self.currentCity
+            }else{
+                 self.cityLabel.text = weather.cityName
+            }
+           
         }
 
     }
@@ -134,20 +142,21 @@ extension WeatherViewController : CLLocationManagerDelegate{
             weatherManager.getWeather(latitude: latitude, longitude: longitude)
             print("lat: \(latitude), long: \(longitude)")
         }
-//            let locationVal: CLLocationCoordinate2D = (manager.location!.coordinate)
-//                   self.weatherManager.getWeather(latitude: locationVal.latitude, longitude: locationVal.longitude)
-//                          let geoCoder = CLGeocoder()
-//                          let location = CLLocation(latitude: locationVal.latitude, longitude: locationVal.longitude)
+            let locationVal: CLLocationCoordinate2D = (manager.location!.coordinate)
+                   self.weatherManager.getWeather(latitude: locationVal.latitude, longitude: locationVal.longitude)
+                          let geoCoder = CLGeocoder()
+                          let location = CLLocation(latitude: locationVal.latitude, longitude: locationVal.longitude)
         
-//                   geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
-//                       placemarks?.forEach({ (placemark) in
-//                           if let city = placemark.locality{
-//                               print(city)
-//                            self.cityLabel.text = city
-//
-//                           }
-//                       })
-//                   }
+                   geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+                       placemarks?.forEach({ (placemark) in
+                           if let city = placemark.locality{
+                               print(city)
+                            self.isFromLocation = true
+                            self.currentCity = city
+
+                           }
+                       })
+                   }
             
     }
     

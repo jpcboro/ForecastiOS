@@ -26,38 +26,46 @@
                                     <constraint firstAttribute="width" constant="151" id="Yf9-fg-aIW"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zco-UP-HgN">
-                                <rect key="frame" x="15" y="330" width="32" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" backgroundImage="location" catalog="system"/>
-                                <connections>
-                                    <action selector="GetCurrentLocationTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JOM-ZQ-1dz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GfY-8i-qTF">
-                                <rect key="frame" x="360" y="327" width="40" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" backgroundImage="magnifyingglass" catalog="system"/>
-                                <connections>
-                                    <action selector="searchTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kK1-sr-JTX"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Name of City" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DZO-2z-Km5">
-                                <rect key="frame" x="63" y="328" width="289" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" red="0.97647058823529409" green="0.74509803921568629" blue="0.5607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWT-Hn-CR3">
                                 <rect key="frame" x="49" y="271" width="345" height="42"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="36"/>
                                 <color key="textColor" red="1" green="0.84313725490000002" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zco-UP-HgN">
+                                <rect key="frame" x="31" y="328.5" width="35" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="0uE-YO-bX7"/>
+                                    <constraint firstAttribute="width" constant="35" id="4va-as-WLx"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="location.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="GetCurrentLocationTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JOM-ZQ-1dz"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Name of City" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DZO-2z-Km5">
+                                <rect key="frame" x="81" y="328" width="265" height="48"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="265" id="uN7-XV-zmp"/>
+                                </constraints>
+                                <color key="textColor" red="0.97647058823529409" green="0.74509803921568629" blue="0.5607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GfY-8i-qTF">
+                                <rect key="frame" x="361" y="327" width="39" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="39" id="eqZ-Aj-EY7"/>
+                                    <constraint firstAttribute="height" constant="39" id="l7u-hf-sX4"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="magnifyingglass" catalog="system"/>
+                                <connections>
+                                    <action selector="searchTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kK1-sr-JTX"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEW-Tq-sI5" userLabel="Temp Stack View">
                                 <rect key="frame" x="49" y="197" width="158.5" height="70"/>
                                 <subviews>
@@ -84,18 +92,25 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DZO-2z-Km5" secondAttribute="bottom" constant="486" id="0Fc-7f-JG1"/>
+                            <constraint firstItem="GfY-8i-qTF" firstAttribute="leading" secondItem="DZO-2z-Km5" secondAttribute="trailing" constant="15" id="4m3-Jl-bsA"/>
+                            <constraint firstItem="GfY-8i-qTF" firstAttribute="centerY" secondItem="zco-UP-HgN" secondAttribute="centerY" id="FQo-6M-aAI"/>
                             <constraint firstItem="yCh-Tk-MjC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="17" id="HBp-RT-x0y"/>
                             <constraint firstItem="PWT-Hn-CR3" firstAttribute="leading" secondItem="fEW-Tq-sI5" secondAttribute="leading" id="LI3-9j-w8y"/>
                             <constraint firstItem="fEW-Tq-sI5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="49" id="NCe-VL-fiJ"/>
                             <constraint firstItem="yCh-Tk-MjC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="18" id="NGh-Wp-rqM"/>
+                            <constraint firstItem="DZO-2z-Km5" firstAttribute="top" secondItem="PWT-Hn-CR3" secondAttribute="bottom" constant="15" id="QWW-B0-w4Q"/>
+                            <constraint firstItem="DZO-2z-Km5" firstAttribute="leading" secondItem="zco-UP-HgN" secondAttribute="trailing" constant="15" id="SYl-Sy-v5I"/>
                             <constraint firstItem="BPJ-ev-5vY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="W01-QI-H51"/>
                             <constraint firstAttribute="bottom" secondItem="BPJ-ev-5vY" secondAttribute="bottom" id="WWN-YC-5T8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fEW-Tq-sI5" secondAttribute="trailing" constant="206.5" id="XFk-sQ-ZqS"/>
                             <constraint firstItem="PWT-Hn-CR3" firstAttribute="top" secondItem="fEW-Tq-sI5" secondAttribute="bottom" constant="4" id="bjR-jf-3ZL"/>
                             <constraint firstItem="PWT-Hn-CR3" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="j76-ah-JFe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GfY-8i-qTF" secondAttribute="trailing" constant="14" id="j9R-1p-WuF"/>
                             <constraint firstItem="BPJ-ev-5vY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rLw-kH-dCo"/>
                             <constraint firstItem="fEW-Tq-sI5" firstAttribute="top" secondItem="yCh-Tk-MjC" secondAttribute="bottom" constant="7.5" id="tQH-XE-d8n"/>
                             <constraint firstItem="BPJ-ev-5vY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="twO-Oj-0oD"/>
+                            <constraint firstItem="GfY-8i-qTF" firstAttribute="top" secondItem="PWT-Hn-CR3" secondAttribute="bottom" constant="13" id="uBA-84-wyz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -113,7 +128,7 @@
     </scenes>
     <resources>
         <image name="background" width="662" height="662"/>
-        <image name="location" catalog="system" width="128" height="115"/>
+        <image name="location.fill" catalog="system" width="128" height="115"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="sun.max" catalog="system" width="128" height="124"/>
     </resources>

@@ -58,9 +58,11 @@ class WeatherViewController: UIViewController {
                 width: 15,
                 height: citySearchTextField.frame.height))
         citySearchTextField.leftViewMode = .always
-        citySearchTextField.layer.cornerRadius = 25
+        citySearchTextField.layer.cornerRadius = 15
         citySearchTextField.layer.borderWidth = 2.0
         citySearchTextField.layer.borderColor = UIColor.lightGray.cgColor
+        
+       
     }
 
 }
